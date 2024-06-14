@@ -1,8 +1,18 @@
 from dotenv import load_dotenv
 import os
 
+from fastapi import Path
+from pydantic import BaseModel
 
 load_dotenv()
+
+BASE_DIR = Path(__file__).parent.parent
+
+
+class AuthJWT(BaseModel):
+    private_key_path: Path = BASE_DIR / "certs" / "jwt-private.pem"
+    public_key_path: Path = BASE_DIR / "certs" / "jwt-public.pem"
+
 
 DB_HOST = os.environ.get('DB_HOST')
 DB_USER = os.environ.get('DB_USER')
@@ -24,4 +34,7 @@ SMTP_USER = os.environ.get("SMTP_USER")
 
 REDIS_HOST = os.environ.get("REDIS_HOST")
 REDIS_PORT = os.environ.get("REDIS_PORT")
+
+
+
 
