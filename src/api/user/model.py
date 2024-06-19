@@ -1,4 +1,5 @@
 from sqlalchemy import Integer, String, Column, ForeignKey
+from sqlalchemy.orm import relationship
 
 from src.core.db.base import Base
 
@@ -9,4 +10,5 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String(length=30), nullable=False)
     email = Column(String(length=30), nullable=False)
-    comments = Column(Integer, ForeignKey('comment.id'))
+    homepage = Column(String, nullable=True)
+    comments = relationship("Comment", back_populates="user")
