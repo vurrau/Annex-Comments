@@ -1,3 +1,5 @@
+from typing import Annotated
+
 from fastapi import Depends, HTTPException, Query, APIRouter
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -32,6 +34,8 @@ async def read_comments(
     return comments
 
 
-@comment.post("/comments/", response_model=CommentBase)
-async def create_comment(comment: CommentCreate, user_id: int, db: AsyncSession = Depends(get_async_session)):
+@comment.post("/comments/", response_model=CommentCreate)
+async def create_comment(comment: Annotated[CommentCreate, Depends()],
+                         user_id: int,
+                         db: AsyncSession = Depends(get_async_session)):
     return await CommentService.create_comment(comment=comment, user_id=user_id, session=db)
