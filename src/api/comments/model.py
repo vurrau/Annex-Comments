@@ -15,5 +15,5 @@ class Comment(Base):
     username = Column(String(length=30), nullable=False)
     response_at = Column(DateTime, default=datetime)
     user = relationship("User", back_populates="comments")
-    replies = relationship("Comment", back_populates="parent", remote_side=[id])  # Добавляем связь для дочерних комментариев
-    parent = relationship("Comment", back_populates="replies", remote_side=[id])  # Добавляем связь для родительских комментариев
+    replies = relationship("Comment", back_populates="parent", remote_side=[id])
+    parent = relationship("Comment", back_populates="replies")

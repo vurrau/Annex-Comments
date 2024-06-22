@@ -6,8 +6,8 @@ from src.api.user.shemas import UserBase, UserCreate
 from src.core.db.base import get_async_session
 
 user = APIRouter(
-    prefix="/request",
-    tags=["request"]
+    prefix="/user",
+    tags=["user"]
 )
 
 

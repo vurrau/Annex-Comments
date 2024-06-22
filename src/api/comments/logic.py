@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from sqlalchemy import select, asc, desc
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import joinedload
@@ -28,9 +30,13 @@ class CommentService:
 
     @staticmethod
     async def create_comment(comment: CommentCreate, user_id: int, session: AsyncSession):
-        db_comment = Comment(content=comment.content, username=comment.username,
-                             user_id=user_id, parent_id=comment.parent_id)
+        db_comment = Comment(content=comment.content,
+                             username=comment.username,
+                             user_id=user_id,
+                             parent_id=comment.parent_id,
+                             response_at=datetime.now())
         session.add(db_comment)
         await session.commit()
         await session.refresh(db_comment)
         return db_comment
+ 

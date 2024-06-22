@@ -2,6 +2,7 @@ from sqlalchemy import Integer, String, Column, ForeignKey
 from sqlalchemy.orm import relationship
 
 from src.core.db.base import Base
+from src.api.comments.model import Comment
 
 
 class User(Base):
