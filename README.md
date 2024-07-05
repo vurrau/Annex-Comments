@@ -1,14 +1,14 @@
 
-# Comments
+# Comments App
 
 The user can leave comments.
 
-All comments entered by the user are stored in a relational database.
-
-database, including user data (data that will help to identify the customer).
-
 
 ## Features
+
+- All comments entered by the user are stored in a relational database.
+  
+- Database, including user data (data that will help to identify the customer).
 
 - For each record, you can write as many records as you like (cascading mapping).
 
